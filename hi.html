@@ -9,13 +9,11 @@
     <script type="module">
         import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 
-        const socket = io("wss://127.0.0.1:8000/", {
+        const socket = io("ws://127.0.0.1:8000/", {
+            origin: "html_page",
             reconnectionDelayMax: 10000,
-            auth: {
-                token: "123"
-            },
             query: {
-                "my-key": "my-value"
+                "send_message": "my-value"
             }
         });
     </script>

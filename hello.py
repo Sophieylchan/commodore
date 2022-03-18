@@ -1,10 +1,10 @@
-from flask import *
+from flask import Flask
 from flask_socketio import *
 
 # Init the server
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'some super secret key!'
-socketio = SocketIO(app, logger=True)
+socketio = SocketIO(app, logger=True, cors_allowed_origins="*")
 
 # Send HTML!
 @app.route('/')
