@@ -11,11 +11,11 @@
 
         const socket = io("ws://127.0.0.1:8000/", {
             origin: "html_page",
-            reconnectionDelayMax: 10000,
-            query: {
-                "send_message": "my-value"
-            }
+            reconnectionDelayMax: 10000
         });
+        socket.on('my response', (data) => {
+            console.log(data)
+        })
     </script>
 </head>
 

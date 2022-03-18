@@ -1,4 +1,5 @@
 from flask import Flask
+import time
 from flask_socketio import *
 
 # Init the server
@@ -29,6 +30,12 @@ def html(username):
     return render_template('index.html', username=username)
 
 # Receive a message from the front end HTML
+@socketio.on('connect')
+def test_connect():
+    for x in range(6):
+        time.sleep(1)
+        emit('my response', {'data': f'Connected {x}'})
+
 @socketio.on('send_message')   
 def message_recieved(data):
     print(data['text'])
