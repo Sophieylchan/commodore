@@ -34,6 +34,12 @@ def message_recieved(data):
     print(data['text'])
     emit('message_from_server', {'text':'Message recieved!'})
 
+@socketio.on('start')
+def handle_start():
+    while True:
+        sleep(1000)
+        emit('hello world', "hello world", broadcast=True)
+
 # Actually Start the App
 if __name__ == '__main__':
     """ Run the app. """    
